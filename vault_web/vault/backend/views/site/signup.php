@@ -1,0 +1,41 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model \frontend\models\SignupForm */
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+
+$this->title = 'Sign Up';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="site-signup">
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>Please fill out the following fields to sign up:</p>
+
+    <div class="row">
+        <div class="col-lg-5">
+            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+
+                <?= $form->field($model, 'email') ?>
+
+                <?= $form->field($model, 'password')->passwordInput() ?>
+
+                <?= $form->field($model, 'password_repeat')->passwordInput() ?>
+
+                <div class="form-group">
+                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                </div>
+
+            <?php ActiveForm::end(); ?>
+            
+            <?php /* Google Sign-In disabled: built on the deprecated gapi.auth2 library (retired
+            March 31, 2023). Needs a Google Identity Services rewrite before re-enabling.
+            <div style="text-align:center;margin-bottom:20px;">OR</div>
+            <button class="btn btn-default btn-lg btn-block" id="googleSignInBtn"><i class="fab fa-google"></i> Continue with Google</button>
+            */ ?>
+        </div>
+    </div>
+</div>

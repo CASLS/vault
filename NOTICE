@@ -1,0 +1,19 @@
+VAuLT
+Copyright 2019-2026 University of Oregon / CASLS
+
+This product includes software developed by CASLS (Center for Applied
+Second Language Studies) at the University of Oregon.
+
+Licensed under the Apache License, Version 2.0.
+
+This product bundles third-party software, licensed as follows:
+
+* CKEditor
+  Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+  Licensed under the GNU Lesser General Public License (LGPL).
+  https://ckeditor.com/legal/ckeditor-oss-license/
+
+* Yii 2 Framework
+  Copyright (c) 2008 Yii Software LLC.
+  Licensed under the BSD 3-Clause License.
+  https://github.com/yiisoft/yii2/blob/master/LICENSE.md

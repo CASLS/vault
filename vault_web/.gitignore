@@ -1,0 +1,40 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Editors/IDEs
+.idea/
+.vscode/
+
+# Backup/swap files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Env files / local overrides
+.env
+.env.*
+*-local.php
+
+# Dependency directories (managed per-app by their own composer.json)
+vendor/
+node_modules/
+
+# Logs
+*.log

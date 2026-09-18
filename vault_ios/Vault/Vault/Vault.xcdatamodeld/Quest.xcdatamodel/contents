@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ArTarget" representedClassName="ArTarget" syncable="YES">
+        <attribute name="audio_media_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="close_after" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="media_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="overlay_media_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="overlay_physical_width" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="physical_width" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="should_auto_close" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="task_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <relationship name="audioMedia" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Media" inverseName="arTargetAudioMedia" inverseEntity="Media"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Media" inverseName="arTargetMedia" inverseEntity="Media"/>
+        <relationship name="overlayMedia" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Media" inverseName="arTargetOverlay" inverseEntity="Media"/>
+        <relationship name="task" maxCount="1" deletionRule="Cascade" destinationEntity="Task" inverseName="arTargets" inverseEntity="Task"/>
+    </entity>
+    <entity name="Media" representedClassName="Media" syncable="YES">
+        <attribute name="created_at" attributeType="String"/>
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="file_size" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="local_path" optional="YES" attributeType="String"/>
+        <attribute name="mime_type" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <attribute name="uri" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+        <relationship name="arTargetAudioMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArTarget" inverseName="audioMedia" inverseEntity="ArTarget"/>
+        <relationship name="arTargetMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArTarget" inverseName="media" inverseEntity="ArTarget"/>
+        <relationship name="arTargetOverlay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArTarget" inverseName="overlayMedia" inverseEntity="ArTarget"/>
+        <relationship name="correctResponseImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="correctResponseImageMedia" inverseEntity="Task"/>
+        <relationship name="incorrectResponseImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="incorrectResponseImageMedia" inverseEntity="Task"/>
+        <relationship name="questMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="media" inverseEntity="Quest"/>
+        <relationship name="questPagingImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="pagingImage" inverseEntity="Quest"/>
+        <relationship name="taskMetaMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskMeta" inverseName="media" inverseEntity="TaskMeta"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="media" inverseEntity="Task"/>
+    </entity>
+    <entity name="Oauth" representedClassName="Oauth" syncable="YES">
+        <attribute name="access_token" attributeType="String"/>
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="expires_in" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="token_type" optional="YES" attributeType="String"/>
+        <attribute name="uid" optional="YES" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <attribute name="user_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="oauth" inverseEntity="User"/>
+    </entity>
+    <entity name="Quest" representedClassName="Quest" syncable="YES">
+        <attribute name="code" attributeType="String"/>
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_active" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_complete" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="media_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="paging_image_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="questMedia" inverseEntity="Media"/>
+        <relationship name="pagingImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="questPagingImage" inverseEntity="Media"/>
+        <relationship name="questUserAccesses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="QuestUserAccess" inverseName="quest" inverseEntity="QuestUserAccess"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="quest" inverseEntity="Task"/>
+    </entity>
+    <entity name="QuestUserAccess" representedClassName="QuestUserAccess" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_owner" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="permission" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="quest_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <attribute name="user_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="questUserAccesses" inverseEntity="Quest"/>
+    </entity>
+    <entity name="RequiredTask" representedClassName="RequiredTask" syncable="YES">
+        <attribute name="child_task_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="created_at" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="parent_task_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="childTask" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Task" inverseName="requiredChildTasks" inverseEntity="Task"/>
+        <relationship name="parentTask" maxCount="1" deletionRule="Cascade" destinationEntity="Task" inverseName="requiredTasks" inverseEntity="Task"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="answer" attributeType="String"/>
+        <attribute name="auto_complete" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="body" attributeType="String"/>
+        <attribute name="correct_response_image_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="correct_response_text" optional="YES" attributeType="String"/>
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="incorrect_response_image_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="incorrect_response_text" optional="YES" attributeType="String"/>
+        <attribute name="is_active" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="quest_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sort_order" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="task_type_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <relationship name="arTargets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ArTarget" inverseName="task" inverseEntity="ArTarget"/>
+        <relationship name="correctResponseImageMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="correctResponseImage" inverseEntity="Media"/>
+        <relationship name="incorrectResponseImageMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="incorrectResponseImage" inverseEntity="Media"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Media" inverseName="tasks" inverseEntity="Media"/>
+        <relationship name="quest" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="tasks" inverseEntity="Quest"/>
+        <relationship name="requiredChildTasks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RequiredTask" inverseName="childTask" inverseEntity="RequiredTask"/>
+        <relationship name="requiredTasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RequiredTask" inverseName="parentTask" inverseEntity="RequiredTask"/>
+        <relationship name="taskMetas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskMeta" inverseName="task" inverseEntity="TaskMeta"/>
+        <relationship name="userTask" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserTask" inverseName="task" inverseEntity="UserTask"/>
+        <relationship name="userTasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UserTask" inverseName="taskUserTask" inverseEntity="UserTask"/>
+    </entity>
+    <entity name="TaskMeta" representedClassName="TaskMeta" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="key" attributeType="String"/>
+        <attribute name="task_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <attribute name="value" attributeType="String"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Media" inverseName="taskMetaMedia" inverseEntity="Media"/>
+        <relationship name="task" maxCount="1" deletionRule="Cascade" destinationEntity="Task" inverseName="taskMetas" inverseEntity="Task"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="auth_key" optional="YES" attributeType="String"/>
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="password_reset_token" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <attribute name="user_type_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="username" attributeType="String"/>
+        <relationship name="oauth" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Oauth" inverseName="user" inverseEntity="Oauth"/>
+        <relationship name="userTasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UserTask" inverseName="user" inverseEntity="UserTask"/>
+    </entity>
+    <entity name="UserTask" representedClassName="UserTask" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_complete" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="response_text" optional="YES" attributeType="String"/>
+        <attribute name="task_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String"/>
+        <attribute name="user_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="userTask" inverseEntity="Task"/>
+        <relationship name="taskUserTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="userTasks" inverseEntity="Task"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userTasks" inverseEntity="User"/>
+    </entity>
+    <entity name="UserTaskSyncQueue" representedClassName="UserTaskSyncQueue" syncable="YES">
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="json" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ArTarget" positionX="-37.8359375" positionY="693.1953125" width="128" height="283"/>
+        <element name="Media" positionX="-19.5078125" positionY="228.2421875" width="128" height="358"/>
+        <element name="Oauth" positionX="169.9140625" positionY="-5.62890625" width="139.34765625" height="210"/>
+        <element name="Quest" positionX="156.83203125" positionY="450.46484375" width="128" height="253"/>
+        <element name="QuestUserAccess" positionX="-495" positionY="-117" width="128" height="163"/>
+        <element name="RequiredTask" positionX="-209.00390625" positionY="543.65625" width="128" height="133"/>
+        <element name="Task" positionX="-698.69921875" positionY="183.09765625" width="128" height="404"/>
+        <element name="TaskMeta" positionX="-390.99609375" positionY="-141.88671875" width="128" height="163"/>
+        <element name="User" positionX="-163.29296875" positionY="-274.4921875" width="128" height="225"/>
+        <element name="UserTask" positionX="-179.5390625" positionY="34.453125" width="128" height="193"/>
+        <element name="UserTaskSyncQueue" positionX="166.109375" positionY="-194.859375" width="128" height="75"/>
+    </elements>
+</model>

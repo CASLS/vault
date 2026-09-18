@@ -1,0 +1,65 @@
+{
+    "name": "yiisoft/yii2-app-advanced",
+    "description": "Yii 2 Advanced Project Template",
+    "keywords": ["yii2", "framework", "advanced", "project template"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4.0",
+        "yiisoft/yii2": "~2.0.54",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.1.0",
+		"claudejanz/yii2-mygii": "dev-master",
+		"google/apiclient": "^2.2",
+		"james-heinrich/getid3":"*",
+        "yiisoft/yii2-jui": "*",
+        "unsplash/unsplash": "~2.5.0",
+        "cb-techservices/yii2-unsplash": "*",
+        "endroid/qr-code": "^3.5"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        },
+	"allow-plugins": {
+            "yiisoft/yii2-composer": true
+        },
+	"audit": {
+            "abandoned": "ignore",
+            "block-insecure": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+                {
+                "type": "package",
+                "package": {
+                    "version": "master",
+                    "name": "cb-techservices/yii2-unsplash",
+                    "source": {
+                        "url": "https://github.com/cb-techservices/yii2-unsplash",
+                        "type": "git",
+                        "reference": "master"
+                    }
+                }
+        }
+    ]
+}

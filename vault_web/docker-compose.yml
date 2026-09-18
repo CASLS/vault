@@ -1,0 +1,26 @@
+services:
+  vault:
+    container_name: vault
+    restart: unless-stopped
+    # environment:
+    ports:
+      - 80:80
+      - 89:89
+      # - 443:443
+    volumes:
+      - ./vault:/var/www/html
+      - /var/www/html/vendor/
+    build:
+      context: docker-build
+  mysql:
+    container_name: mysql
+    ports:
+        - 3306:3306
+    # volumes:
+    #   - ./mysql-data:/var/lib/mysql
+    image: mariadb:10
+    environment:
+      - MYSQL_ROOT_PASSWORD=verysecret
+      - MYSQL_DATABASE=yii2advanced
+      - MYSQL_USER=yii2advanced
+      - MYSQL_PASSWORD=secret
